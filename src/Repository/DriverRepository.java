@@ -3,39 +3,43 @@ package Repository;
 import Model.Driver;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 
-public class DriverRepository {
-    List<Driver> availableDrivers;
-    List<Driver> occupiedDrivers;
-
+public class DriverRepository implements Repository<Driver>{
+    List<Driver> drivers;
     public DriverRepository() {
-        availableDrivers = new LinkedList<>();
-        occupiedDrivers = new LinkedList<>();
+        drivers = new ArrayList<>();
     }
-    public boolean addDriver(Driver driver){
-        availableDrivers.add(driver);
+
+    public boolean create(Driver driver){
+        if(existsById(driver.getId())){
+            return false;
+        }
+        drivers.add(driver);
         return true;
     }
 
-    public boolean assignCustomer(int customerId,int driverId){
-        for(int i=0;i<availableDrivers.size();i++){
-            if(availableDrivers.get(i).getId()==driverId){
-                availableDrivers.get(i).setCustomerId(customerId);
-                occupiedDrivers.add(availableDrivers.get(i));
-                availableDrivers.remove(availableDrivers.get(i));
+    public Driver findById(int driverId){
+        for(int i=0;i<drivers.size();i++){
+            if(drivers.get(i).getId()==driverId){
+                return drivers.get(i);
+            }
+        }
+        return null;
+    }
+
+
+    public boolean existsById(int driverId){
+        for(int i=0;i<drivers.size();i++){
+            if(drivers.get(i).getId()==driverId){
                 return true;
             }
         }
         return false;
     }
-    public List<Driver> getAvailableDrivers(){
-        return availableDrivers;
+
+    public List<Driver> findAll(){
+        return drivers;
     }
 
-    public List<Driver> getOccupiedDrivers(){
-        return occupiedDrivers;
-    }
 }
