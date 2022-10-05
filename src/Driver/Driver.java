@@ -35,5 +35,6 @@ public class Driver {
         cabService.bookRide(1,2);
         cabService.findRide(1,new Point(5,6),new Point(20,4));
         cabService.getAllUsers();
+        cabService.getAllDrivers();
     }
 }

@@ -166,4 +166,9 @@ public class CabService {
            System.out.println("Driver addition failure");
        }
     }
+
+    public void getAllDrivers(){
+        driverRepository.findAll().stream().forEach(System.out::println);
+    }
+
 }
