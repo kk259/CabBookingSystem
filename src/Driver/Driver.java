@@ -27,11 +27,7 @@ public class Driver {
         }catch (Exception e){
             System.out.println("can't add driver");
         }
-
         cabService.createUser(new User(-1,null,'T',-1));
-
-        //cabService.addDriver(driver2);
-        //cabService.addDriver(driver3);
         cabService.createUser(user);
         cabService.findRide(1,new Point(15,6),new Point(20,4));
         cabService.bookRide(1,1);
@@ -39,8 +35,5 @@ public class Driver {
         cabService.bookRide(1,2);
         cabService.findRide(1,new Point(5,6),new Point(20,4));
         cabService.getAllUsers();
-        //List<Model.Driver> occupiedDrivers  = cabService.findOngoingRides();
-        //d.displayDrivers(occupiedDrivers);
-        //d.displayDrivers(freeDrivers);
     }
 }

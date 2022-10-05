@@ -1,6 +1,5 @@
 package Repository;
 
-import Model.Driver;
 import Model.User;
 
 import java.util.ArrayList;
